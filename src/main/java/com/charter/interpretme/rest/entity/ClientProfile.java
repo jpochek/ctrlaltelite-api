@@ -2,6 +2,7 @@ package com.charter.interpretme.rest.entity;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +11,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.List;
 
 /**
  * Profile implementation for a client application user.
@@ -38,16 +38,21 @@ public class ClientProfile {
     private String phoneNumber;
     private Double averageRating;
     private String photoLocation;
+    private Integer age;
+    private String gender;
+    @Type(type = "yes_no")
+    private Boolean meetInPerson;
 
     // No-arg constructor...needed for Hibernate
     private ClientProfile() {
         super();
     }
 
-    public ClientProfile(String username, String firstName, String lastName, String languages,
+    public ClientProfile(String id, String username, String firstName, String lastName, String languages,
                          String streetAddress1, String streetAddress2, String city, String state,
                          String postalCode, String emailAddress, String phoneNumber, Double averageRating,
-                         String photoLocation) {
+                         String photoLocation, Integer age, String gender, Boolean meetInPerson) {
+        this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -61,6 +66,9 @@ public class ClientProfile {
         this.phoneNumber = phoneNumber;
         this.averageRating = averageRating;
         this.photoLocation = photoLocation;
+        this.age = age;
+        this.gender = gender;
+        this.meetInPerson = meetInPerson;
 
     }
 
@@ -208,5 +216,29 @@ public class ClientProfile {
 
     public void setPhotoLocation(String photoLocation) {
         this.photoLocation = photoLocation;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Boolean getMeetInPerson() {
+        return meetInPerson;
+    }
+
+    public void setMeetInPerson(Boolean meetInPerson) {
+        this.meetInPerson = meetInPerson;
     }
 }

@@ -227,7 +227,6 @@ meet_in_person)
 VALUES
 (5.0,'Boston','win.min@mail.com','Win','Burmese,English','Min','639-667-1919','../img/min.jpg','88142','Volunteer','MA','983 Lincoln St','','min66', 33, 'Male', 'Y');
 
-
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -241,9 +240,12 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person)
 VALUES
-(5.0,'St Louis','Dave.woo@gmail.com','Dave','Spanish','Woo','639-900-1919','../img/Dave.jpg','11142','Client','MO','123 Main St','','Dave8');
+(5.0,'St Louis','Dave.woo@gmail.com','Dave','Spanish','Woo','639-900-1919','../img/Dave.jpg','11142','Client','MO','123 Main St','','Dave8',32,'Male','Y');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -257,9 +259,12 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person)
 VALUES
-(5.0,'LosAngeles','Mika.Hakinnen@gmail.com','Mika','Finnish','Hakkinen','123-100-0919','../img/mika.jpg','77143','Client','CA','323 Dane St','','mika43');
+(5.0,'LosAngeles','Mika.Hakinnen@gmail.com','Mika','Finnish','Hakkinen','123-100-0919','../img/mika.jpg','77143','Client','CA','323 Dane St','','mika43',35,'Male','Y');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -273,9 +278,13 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person
+)
 VALUES
-(5.0,'Chelsea','Luiz.Nani@gmail.com','Luiz','Portugese','Nani','349-210-1919','../img/nani.jpg','60244','Client','NY','8453 Camp St','','Nani4');
+(5.0,'Chelsea','Luiz.Nani@gmail.com','Luiz','Portugese','Nani','349-210-1919','../img/nani.jpg','60244','Client','NY','8453 Camp St','','Nani4',39,'Male','N');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -289,9 +298,12 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person)
 VALUES
-(5.0,'New Orleans','Nico.Hulkenberg@mail.com','Nico','German','Hulkenberg','779-400-1919','../img/Nico.jpg','63642','Client','LA','13 Wayne St','','Hulk3');
+(5.0,'New Orleans','Nico.Hulkenberg@mail.com','Nico','German','Hulkenberg','779-400-1919','../img/Nico.jpg','63642','Client','LA','13 Wayne St','','Hulk3',42,'Male','N');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -305,9 +317,12 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person)
 VALUES
-(5.0,'Seattle','romain.grosjean@mail.com','Romain','French','Grosjean','330-660-1919','../img/Romain.jpg','69742','Client','WA','1 Well St','','Romain66');
+(5.0,'Seattle','romain.grosjean@mail.com','Romain','French','Grosjean','330-660-1919','../img/Romain.jpg','69742','Client','WA','1 Well St','','Romain66',28,'Male','Y');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -321,9 +336,12 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person)
 VALUES
-(5.0,'San Diego','mark.rabada@mail.com','Mark','Afrikaans','Rabada','880-980-1919','../img/rabada.jpg','93742','Client','CA','769 Kulu St','','Rabada31');
+(5.0,'San Diego','mark.rabada@mail.com','Mark','Afrikaans','Rabada','880-980-1919','../img/rabada.jpg','93742','Client','CA','769 Kulu St','','Rabada31',23,'Male','Y');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -337,9 +355,12 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person)
 VALUES
-(4.0,'Sedona','kim.Sam@mail.com','Kim','Somali','Sam','999-000-1919','../img/Sam.jpg','53142','Client','AZ','13 Lone St','','Sam49');
+(4.0,'Sedona','kim.Sam@mail.com','Kim','Somali','Sam','999-000-1919','../img/Sam.jpg','53142','Client','AZ','13 Lone St','','Sam49',52,'Male','Y');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -353,9 +374,12 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person)
 VALUES
-(5.0,'Chicago','Moeen.ALi@gmail.com','Moeen','Arabic','ALi','699-900-1919','../img/Ali.jpg','83142','Client','IL','3 Pine St','','Ali77');
+(5.0,'Chicago','Moeen.ALi@gmail.com','Moeen','Arabic','ALi','699-900-1919','../img/Ali.jpg','83142','Client','IL','3 Pine St','','Ali77',38,'Male','N');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -369,9 +393,12 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person)
 VALUES
-(4.0,'Cleveland','Antonio.Villa@gmail.com','Antonio','Spanish','Villa','539-700-1919','../img/villa.jpg','13142','Client','OH','23 Zen St','','Villa60');
+(4.0,'Cleveland','Antonio.Villa@gmail.com','Antonio','Spanish','Villa','539-700-1919','../img/villa.jpg','13142','Client','OH','23 Zen St','','Villa60',47,'Male','Y');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -385,9 +412,12 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person)
 VALUES
-(5.0,'Austin','Abu.Sone@gmail.com','Abu','Lingala,French','Sone','839-900-1919','../img/Abu.jpg','43142','Client','TX','187 Krug St','','Abu37');
+(5.0,'Austin','Abu.Sone@gmail.com','Abu','Lingala,French','Sone','839-900-1919','../img/Abu.jpg','43142','Client','TX','187 Krug St','','Abu37',22,'Male','N');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
@@ -401,6 +431,9 @@ profile_type,
 state,
 street_address1,
 street_address2,
-username)
+username,
+age,
+gender,
+meet_in_person)
 VALUES
-(5.0,'Boston','zin.mina@mail.com','zin','Burmese','mina','639-667-1919','../img/mina.jpg','88142','Client','MA','103 Spring St','','mina03');
+(5.0,'Boston','zin.mina@mail.com','zin','Burmese','mina','639-667-1919','../img/mina.jpg','88142','Client','MA','103 Spring St','','mina03',38,'Male','Y');
