@@ -89,10 +89,28 @@ public class VolunteerControllerTests {
         assertThat(response, is(profile));
     }
 
+    @Test
+    public void findByUserReturnsValid() {
+        VolunteerProfile profile = buildProfile();
+        when(volunteerProfileRepository.findByUsername("test1")).thenReturn(profile);
+        VolunteerProfile response = controller.findByUsername("test1");
+        assertThat(response, is(notNullValue()));
+        assertThat(response, is(profile));
+    }
+
+    @Test
+    public void findByEmailReturnsValid() {
+        VolunteerProfile profile = buildProfile();
+        when(volunteerProfileRepository.findByEmailAddress("here@there.com")).thenReturn(profile);
+        VolunteerProfile response = controller.findByEmail("here@there.com");
+        assertThat(response, is(notNullValue()));
+        assertThat(response, is(profile));
+    }
+
     private VolunteerProfile buildProfile() {
         return new VolunteerProfile("1","test1", "Test", "User", "German, Italian",
                 "123 Nowhere St.", "", "Charlotte", "NC", "28277",
                 "here@there.com", "704-555-1212", 0.0, "", 33,
-                "Male", false);
+                "Male", false, "Text");
     }
 }

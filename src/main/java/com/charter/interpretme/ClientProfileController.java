@@ -38,6 +38,16 @@ public class ClientProfileController {
         return clientProfileRepository.findOne(profileId);
     }
 
+    @PostMapping("/user/{username}")
+    public ClientProfile findByUsername(@PathVariable String username) {
+        return clientProfileRepository.findByUsername(username);
+    }
+
+    @PostMapping("/email/{email}")
+    public ClientProfile findByEmail(@PathVariable("email") String emailAddress) {
+        return clientProfileRepository.findByEmailAddress(emailAddress);
+    }
+
     @PostMapping
     public ClientProfile addClientProfile(@RequestBody ClientProfile profile) {
         return clientProfileRepository.save(profile);
@@ -50,7 +60,7 @@ public class ClientProfileController {
                 profile.getLastName(), profile.getLanguages(), profile.getStreetAddress1(), profile.getStreetAddress2(),
                 profile.getCity(), profile.getState(), profile.getPostalCode(), profile.getEmailAddress(),
                 profile.getPhoneNumber(), profile.getAverageRating(), profile.getPhotoLocation(),
-                profile.getAge(), profile.getGender(), profile.getMeetInPerson()));
+                profile.getAge(), profile.getGender(), profile.getMeetInPerson(), profile.getContactMethod()));
     }
 
     @DeleteMapping("/{profileId}")
