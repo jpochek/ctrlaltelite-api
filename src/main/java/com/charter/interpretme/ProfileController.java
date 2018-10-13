@@ -1,4 +1,4 @@
-package com.springboot.jpa.example;
+package com.charter.interpretme;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/courses")
-public class CourseController {
+public class ProfileController {
 
     @Autowired
     private CourseRepository courseRepository;

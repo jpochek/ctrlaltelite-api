@@ -1,4 +1,4 @@
-package com.springboot.jpa.example;
+package com.charter.interpretme;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
@@ -12,6 +12,7 @@ import static org.mockito.Mockito.when;
 import java.util.Arrays;
 import java.util.List;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -25,7 +26,7 @@ public class CourseControllerTests {
     private CourseRepository courseRepository;
 
     @InjectMocks
-    private CourseController courseController;
+    private ProfileController courseController;
 
     @Test
     public void findCoursesCallsFindAll() {
@@ -36,7 +37,7 @@ public class CourseControllerTests {
 
         assertThat(response, is(notNullValue()));
         assertThat(response.size(), is(1));
-        assertThat(response, hasItem(course));
+        assertThat(response, Matchers.hasItem(course));
     }
 
     @Test
