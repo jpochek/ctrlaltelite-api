@@ -1,4 +1,4 @@
-package com.springboot.jpa.example;
+package com.charter.interpretme;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
