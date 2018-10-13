@@ -2,6 +2,7 @@ package com.charter.interpretme.rest.entity;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +37,10 @@ public class VolunteerProfile {
     private String emailAddress;
     private String phoneNumber;
     private Double averageRating;
+    private Integer age;
+    private String gender;
+    @Type(type = "yes_no")
+    private Boolean meetInPerson;
 
     // TODO availability
     // TODO requestTypes
@@ -48,7 +53,7 @@ public class VolunteerProfile {
     public VolunteerProfile(String id, String username, String firstName, String lastName, String languages,
                             String streetAddress1, String streetAddress2, String city, String state,
                             String postalCode, String emailAddress, String phoneNumber, Double averageRating,
-                            String photoLocation) {
+                            String photoLocation, Integer age, String gender, Boolean meetInPerson) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -63,6 +68,9 @@ public class VolunteerProfile {
         this.phoneNumber = phoneNumber;
         this.averageRating = averageRating;
         this.photoLocation = photoLocation;
+        this.age = age;
+        this.gender = gender;
+        this.meetInPerson = meetInPerson;
     }
 
     @Override
@@ -205,5 +213,29 @@ public class VolunteerProfile {
 
     public void setAverageRating(Double averageRating) {
         this.averageRating = averageRating;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Boolean getMeetInPerson() {
+        return meetInPerson;
+    }
+
+    public void setMeetInPerson(Boolean meetInPerson) {
+        this.meetInPerson = meetInPerson;
     }
 }

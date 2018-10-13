@@ -49,7 +49,8 @@ public class VolunteerProfileController {
         return volunteerProfileRepository.save(new VolunteerProfile(profileId, profile.getUsername(), profile.getFirstName(),
                 profile.getLastName(), profile.getLanguages(), profile.getStreetAddress1(), profile.getStreetAddress2(),
                 profile.getCity(), profile.getState(), profile.getPostalCode(), profile.getEmailAddress(), profile.getPhoneNumber(),
-                profile.getAverageRating(), profile.getPhotoLocation()));
+                profile.getAverageRating(), profile.getPhotoLocation(), profile.getAge(), profile.getGender(),
+                profile.getMeetInPerson()));
     }
 
     @DeleteMapping("/{profileId}")
