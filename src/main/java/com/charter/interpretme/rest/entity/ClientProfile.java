@@ -37,6 +37,7 @@ public class ClientProfile {
     private String emailAddress;
     private String phoneNumber;
     private Double averageRating;
+    private String photoLocation;
 
     // No-arg constructor...needed for Hibernate
     private ClientProfile() {
@@ -45,7 +46,8 @@ public class ClientProfile {
 
     public ClientProfile(String username, String firstName, String lastName, String languages,
                          String streetAddress1, String streetAddress2, String city, String state,
-                         String postalCode, String emailAddress, String phoneNumber, Double averageRating) {
+                         String postalCode, String emailAddress, String phoneNumber, Double averageRating,
+                         String photoLocation) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -58,6 +60,7 @@ public class ClientProfile {
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.averageRating = averageRating;
+        this.photoLocation = photoLocation;
 
     }
 
@@ -197,5 +200,13 @@ public class ClientProfile {
 
     public void setAverageRating(Double averageRating) {
         this.averageRating = averageRating;
+    }
+
+    public String getPhotoLocation() {
+        return photoLocation;
+    }
+
+    public void setPhotoLocation(String photoLocation) {
+        this.photoLocation = photoLocation;
     }
 }
