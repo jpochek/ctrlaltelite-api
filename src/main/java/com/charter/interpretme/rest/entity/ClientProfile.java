@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * Profile implementation for a client application user.
  */
+@Entity
 public class ClientProfile extends Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
