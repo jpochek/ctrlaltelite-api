@@ -92,6 +92,7 @@ public class VolunteerControllerTests {
     private VolunteerProfile buildProfile() {
         return new VolunteerProfile("1","test1", "Test", "User", "German, Italian",
                 "123 Nowhere St.", "", "Charlotte", "NC", "28277",
-                "here@there.com", "704-555-1212", 0.0, "");
+                "here@there.com", "704-555-1212", 0.0, "", 33,
+                "Male", false);
     }
 }
