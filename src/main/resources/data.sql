@@ -37,7 +37,7 @@ gender,
 meet_in_person,
 contact_method)
 VALUES
-(5.0,'St Louis','john.doe@gmail.com','John','Spanish,Italian,English','Doe','639-900-1919','../img/john.jpg','63142','Volunteer','MO','123 Main St','','johndoe9', 33, 'Male', 'Y', 'Text');
+(5.0,'St Louis','john.doe@gmail.com','John','Spanish,Italian,English','Doe','639-900-1919','../img/john.jpg','63142','Volunteer','MO','123 Main St','','johndoe8', 33, 'Male', 'Y', 'Text');
 INSERT INTO VOLUNTEER_PROFILE(average_rating,
 city,
 email_address,

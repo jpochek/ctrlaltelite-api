@@ -1,0 +1,18 @@
+<html>
+<body>
+<div style="border: 1px solid green;background-color: #F2F6F4;max-width:580px;min-width:580px; margin:0 auto;margin-left: 10px;margin-right: 775px;overflow: hidden;max-height:650px;
+         min-height:600px;">
+    <h2 style="margin-left: 15px;">Confirmation</h2>
+    <div style="color:#728C00;margin-left: 10px;">
+        <table style="width:50% ;margin-left: 0px;">
+            <tr>
+                <td>
+                    ${confirmationLink}
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+</body>
+</html>
