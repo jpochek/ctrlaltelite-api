@@ -105,6 +105,7 @@ public class ClientProfileTests {
         return new ClientProfile("1", "testClient", "Test", "Client",
                 "English,German,Italian,Portuguese", "123 Anywhere Ave.", "",
                 "St. Louis", "MO", "12345", "cantbebothered@test.com",
-                "123-456-7890", 0.0, "", 50, "Male", false);
+                "123-456-7890", 0.0, "", 50, "Male", false,
+                "Email");
     }
 }

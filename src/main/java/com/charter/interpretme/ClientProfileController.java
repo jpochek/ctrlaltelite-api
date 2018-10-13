@@ -60,7 +60,7 @@ public class ClientProfileController {
                 profile.getLastName(), profile.getLanguages(), profile.getStreetAddress1(), profile.getStreetAddress2(),
                 profile.getCity(), profile.getState(), profile.getPostalCode(), profile.getEmailAddress(),
                 profile.getPhoneNumber(), profile.getAverageRating(), profile.getPhotoLocation(),
-                profile.getAge(), profile.getGender(), profile.getMeetInPerson()));
+                profile.getAge(), profile.getGender(), profile.getMeetInPerson(), profile.getContactMethod()));
     }
 
     @DeleteMapping("/{profileId}")
