@@ -77,6 +77,24 @@ public class ClientProfileTests {
     }
 
     @Test
+    public void findByUsernamePostReturnsValid() {
+        ClientProfile profile = buildProfile();
+        when(clientProfileRepository.findByUsername("testClient")).thenReturn(profile);
+        ClientProfile response = controller.findByUsername("testClient");
+        assertThat(response, is(notNullValue()));
+        assertThat(response, is(profile));
+    }
+
+    @Test
+    public void findByEmailPostReturnsValid() {
+        ClientProfile profile = buildProfile();
+        when(clientProfileRepository.findByEmailAddress("cantbebothered@test.com")).thenReturn(profile);
+        ClientProfile response = controller.findByEmail("cantbebothered@test.com");
+        assertThat(response, is(notNullValue()));
+        assertThat(response, is(profile));
+    }
+
+    @Test
     public void deleteExisting() {
         doNothing().when(clientProfileRepository).delete("1");
         controller.deleteProfile("1");

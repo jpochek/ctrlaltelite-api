@@ -57,4 +57,14 @@ public class VolunteerProfileController {
     public void deleteProfile(@PathVariable String profileId) {
         volunteerProfileRepository.delete(profileId);
     }
+
+    @PostMapping("/user/{username}")
+    public VolunteerProfile findByUsername(@PathVariable String username) {
+        return volunteerProfileRepository.findByUsername(username);
+    }
+
+    @PostMapping("/email/{email}")
+    public VolunteerProfile findByEmail(@PathVariable("email") String emailAddress) {
+        return volunteerProfileRepository.findByEmailAddress(emailAddress);
+    }
 }

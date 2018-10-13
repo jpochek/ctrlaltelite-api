@@ -38,6 +38,16 @@ public class ClientProfileController {
         return clientProfileRepository.findOne(profileId);
     }
 
+    @PostMapping("/user/{username}")
+    public ClientProfile findByUsername(@PathVariable String username) {
+        return clientProfileRepository.findByUsername(username);
+    }
+
+    @PostMapping("/email/{email}")
+    public ClientProfile findByEmail(@PathVariable("email") String emailAddress) {
+        return clientProfileRepository.findByEmailAddress(emailAddress);
+    }
+
     @PostMapping
     public ClientProfile addClientProfile(@RequestBody ClientProfile profile) {
         return clientProfileRepository.save(profile);
