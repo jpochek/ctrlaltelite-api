@@ -42,6 +42,7 @@ public class ClientProfile {
     private String gender;
     @Type(type = "yes_no")
     private Boolean meetInPerson;
+    private String contactMethod;
 
     // No-arg constructor...needed for Hibernate
     private ClientProfile() {
@@ -51,7 +52,8 @@ public class ClientProfile {
     public ClientProfile(String id, String username, String firstName, String lastName, String languages,
                          String streetAddress1, String streetAddress2, String city, String state,
                          String postalCode, String emailAddress, String phoneNumber, Double averageRating,
-                         String photoLocation, Integer age, String gender, Boolean meetInPerson) {
+                         String photoLocation, Integer age, String gender, Boolean meetInPerson,
+                         String contactMethod) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -69,6 +71,7 @@ public class ClientProfile {
         this.age = age;
         this.gender = gender;
         this.meetInPerson = meetInPerson;
+        this.contactMethod = contactMethod;
 
     }
 
@@ -240,5 +243,13 @@ public class ClientProfile {
 
     public void setMeetInPerson(Boolean meetInPerson) {
         this.meetInPerson = meetInPerson;
+    }
+
+    public String getContactMethod() {
+        return contactMethod;
+    }
+
+    public void setContactMethod(String contactMethod) {
+        this.contactMethod = contactMethod;
     }
 }
