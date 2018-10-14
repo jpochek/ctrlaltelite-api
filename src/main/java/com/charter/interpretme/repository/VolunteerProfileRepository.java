@@ -9,9 +9,9 @@ import java.util.List;
 
 @Repository
 public interface VolunteerProfileRepository extends JpaRepository<VolunteerProfile, String>, JpaSpecificationExecutor {
-    VolunteerProfile findByUsername(String username);
+    VolunteerProfile findByUsernameContainingIgnoreCase(String username);
 
-    VolunteerProfile findByEmailAddress(String emailAddress);
+    VolunteerProfile findByEmailAddressContainingIgnoreCase(String emailAddress);
 
     List<VolunteerProfile> findByStreetAddress1AndStateAndPostalCode(String streetAddress, String state, String postalCode);
 }
