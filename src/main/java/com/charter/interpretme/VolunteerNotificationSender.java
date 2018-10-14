@@ -31,7 +31,7 @@ public class VolunteerNotificationSender {
 
     public void sendVolunteerNotification(ServiceRequest serviceRequest, URL url) {
         List<VolunteerProfile> volunteers = volunteerProfileRepository
-                .findByPostal(serviceRequest.getZipCode());
+                .findByPostalCode(serviceRequest.getZipCode());
         if (CollectionUtils.isEmpty(volunteers))
             volunteers = volunteerProfileRepository
                     .findByStateAndCity(serviceRequest.getState(), serviceRequest.getCity());

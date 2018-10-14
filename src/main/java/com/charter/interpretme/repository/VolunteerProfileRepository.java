@@ -14,7 +14,7 @@ public interface VolunteerProfileRepository extends JpaRepository<VolunteerProfi
 
     VolunteerProfile findByEmailAddressContainingIgnoreCase(String emailAddress);
 
-    List<VolunteerProfile> findByPostal(String postalCode);
+    List<VolunteerProfile> findByPostalCode(String postalCode);
 
     List<VolunteerProfile> findByStateAndCity(String state, String city);
 
