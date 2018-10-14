@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClientProfileRepository extends JpaRepository<ClientProfile, String> {
-    ClientProfile findByUsername(String username);
-    ClientProfile findByEmailAddress(String emailAddress);
+    ClientProfile findByUsernameContainingIgnoreCase(String username);
+    ClientProfile findByEmailAddressContainingIgnoreCase(String emailAddress);
 }

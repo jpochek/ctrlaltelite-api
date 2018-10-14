@@ -1,16 +1,12 @@
 package com.charter.interpretme;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
-import com.charter.interpretme.repository.VolunteerProfileRepository;
-import com.charter.interpretme.rest.entity.VolunteerProfile;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +25,7 @@ public class ServiceRequestController {
     @Autowired
     private ServiceRequestRepository serviceRequestRepository;
     @Autowired
-    private VolunteerProfileRepository volunteerProfileRepository;
-    @Autowired
-    private MainSender mailSender;
+    private VolunteerNotificationSender volunteerNotificationSender;
 
     @GetMapping
     public List<ServiceRequest> getServiceRequests() {
@@ -39,23 +33,12 @@ public class ServiceRequestController {
     }
 
     @PostMapping
-    public ServiceRequest create(@RequestBody ServiceRequest serviceRequest) {
-        List<VolunteerProfile> volunteers = volunteerProfileRepository.findByStreetAddress1AndStateAndPostalCode(
-                serviceRequest.getStreetAddress(), serviceRequest.getState(), serviceRequest.getZipCode());
+    public ServiceRequest create(@RequestBody ServiceRequest serviceRequest, HttpServletRequest request)
+            throws MalformedURLException {
 
+        URL url = new URL(request.getRequestURL().toString());
 
-        if (!CollectionUtils.isEmpty(volunteers)) {
-            Map<String, String> filteredVolunteers = volunteers.stream()
-                    .filter(v -> v.getLanguages().contains(serviceRequest.getLanguageFrom()))
-                    .filter(v -> v.getLanguages().contains(serviceRequest.getLanguageTo()))
-                    .collect(Collectors.toMap(VolunteerProfile::getId, VolunteerProfile::getEmailAddress));
-
-            mailSender.sendEmailToVolunteers(filteredVolunteers);
-        }
-
-
-
-        return serviceRequestRepository.save(new ServiceRequest(
+        ServiceRequest response = serviceRequestRepository.save(new ServiceRequest(
                 serviceRequest.getClientId(),
                 null,
                 serviceRequest.getLanguageTo(),
@@ -63,6 +46,7 @@ public class ServiceRequestController {
                 serviceRequest.getPriority(),
                 serviceRequest.getZipCode(),
                 serviceRequest.getState(),
+                serviceRequest.getCity(),
                 serviceRequest.getStreetAddress(),
                 serviceRequest.getInPerson(),
                 serviceRequest.getCategory(),
@@ -71,6 +55,8 @@ public class ServiceRequestController {
                 serviceRequest.getAppointmentTo(),
                 ServiceRequest.Status.Pending
         ));
+        volunteerNotificationSender.sendVolunteerNotificationAsync(response, url);
+        return response;
     }
 
     @PutMapping("/{serviceRequestId}")
@@ -83,6 +69,7 @@ public class ServiceRequestController {
                 serviceRequest.getPriority(),
                 serviceRequest.getZipCode(),
                 serviceRequest.getState(),
+                serviceRequest.getCity(),
                 serviceRequest.getStreetAddress(),
                 serviceRequest.getInPerson(),
                 serviceRequest.getCategory(),

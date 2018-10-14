@@ -41,6 +41,8 @@ public class ServiceRequest {
     private String zipCode;
     @Column(name = "state")
     private String state;
+    @Column(name="city")
+    private String city;
     @Column(name = "streetAddress")
     private String streetAddress;
     @Column(name = "isInPerson")
@@ -72,6 +74,7 @@ public class ServiceRequest {
             Priority priority,
             String zipCode,
             String state,
+            String city,
             String streetAddress,
             Boolean isInPerson,
             String category,
@@ -88,13 +91,14 @@ public class ServiceRequest {
         this.priority = priority;
         this.zipCode = zipCode;
         this.state = state;
+        this.city = city;
         this.streetAddress = streetAddress;
         this.isInPerson = isInPerson;
         this.category = category;
         this.description = description;
         this.status = status;
-        //        this.appointmentFrom = appointmentFrom;
-        //        this.appointmentTo = appointmentTo;
+        this.appointmentFrom = appointmentFrom;
+        this.appointmentTo = appointmentTo;
     }
 
     @JsonCreator
@@ -106,6 +110,7 @@ public class ServiceRequest {
             @JsonProperty("priority") Priority priority,
             @JsonProperty("zipCode") String zipCode,
             @JsonProperty("state") String state,
+            @JsonProperty("city") String city,
             @JsonProperty("streetAddress") String streetAddress,
             @JsonProperty("isInPerson") Boolean isInPerson,
             @JsonProperty("category") String category,
@@ -122,13 +127,14 @@ public class ServiceRequest {
         this.priority = priority;
         this.zipCode = zipCode;
         this.state = state;
+        this.city = city;
         this.streetAddress = streetAddress;
         this.isInPerson = isInPerson;
         this.category = category;
         this.description = description;
         this.status = status;
-        //        this.appointmentFrom = appointmentFrom;
-        //        this.appointmentTo = appointmentTo;
+        this.appointmentFrom = appointmentFrom;
+        this.appointmentTo = appointmentTo;
     }
 
     public String getId() {
@@ -137,6 +143,10 @@ public class ServiceRequest {
 
     public Status getStatus() {
         return status;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public String getVolunteerId() {
@@ -192,12 +202,20 @@ public class ServiceRequest {
         return appointmentTo;
     }
 
+    public void setVolunteerId(String volunteerId) {
+        this.volunteerId = volunteerId;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public static enum Priority {
         High, Mediaum, low
     }
 
     public static enum Status {
-        Pending, Complete , Cancelled
+        Pending, Completed , Cancelled
     }
 
 }
