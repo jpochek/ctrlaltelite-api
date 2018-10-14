@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/html">
+<body>
+<div style="border: 1px solid green;background-color: #F2F6F4;max-width:580px;min-width:580px; margin:0 auto;margin-left: 10px;margin-right: 775px;overflow: hidden;max-height:650px;
+min-height:600px;">
+    <h2 style="margin-left: 15px;">Translator Request</h2>
+    <div style="color:#728C00;margin-left: 10px;">
+        <p style=3D"margin: 10px 0;">Dear ${emailInfo.volunteerName},</p>
+        <p style=3D"margin: 10px 0;">You have been requested as a translator for ${emailInfo.clientName}
+        from ${emailInfo.appointmentFrom} to ${emailInfo.appointmentTo} via ${emailInfo.typeOfRequest}.
+        Please click on following buttons to accept or decline this request.</p>
+        <br></br>
+        <button><a href=${emailInfo.confirmationLink}>Accept</a></button>
+    </div>
+</div>
+</body>
+</html>
