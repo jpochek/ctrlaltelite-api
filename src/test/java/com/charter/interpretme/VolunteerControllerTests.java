@@ -92,7 +92,7 @@ public class VolunteerControllerTests {
     @Test
     public void findByUserReturnsValid() {
         VolunteerProfile profile = buildProfile();
-        when(volunteerProfileRepository.findByUsername("test1")).thenReturn(profile);
+        when(volunteerProfileRepository.findByUsernameContainingIgnoreCase("test1")).thenReturn(profile);
         VolunteerProfile response = controller.findByUsername("test1");
         assertThat(response, is(notNullValue()));
         assertThat(response, is(profile));
@@ -101,7 +101,7 @@ public class VolunteerControllerTests {
     @Test
     public void findByEmailReturnsValid() {
         VolunteerProfile profile = buildProfile();
-        when(volunteerProfileRepository.findByEmailAddress("here@there.com")).thenReturn(profile);
+        when(volunteerProfileRepository.findByEmailAddressContainingIgnoreCase("here@there.com")).thenReturn(profile);
         VolunteerProfile response = controller.findByEmail("here@there.com");
         assertThat(response, is(notNullValue()));
         assertThat(response, is(profile));
