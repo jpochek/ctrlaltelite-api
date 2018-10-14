@@ -79,7 +79,7 @@ public class ClientProfileTests {
     @Test
     public void findByUsernamePostReturnsValid() {
         ClientProfile profile = buildProfile();
-        when(clientProfileRepository.findByUsername("testClient")).thenReturn(profile);
+        when(clientProfileRepository.findByUsernameContainingIgnoreCase("testClient")).thenReturn(profile);
         ClientProfile response = controller.findByUsername("testClient");
         assertThat(response, is(notNullValue()));
         assertThat(response, is(profile));
@@ -88,7 +88,7 @@ public class ClientProfileTests {
     @Test
     public void findByEmailPostReturnsValid() {
         ClientProfile profile = buildProfile();
-        when(clientProfileRepository.findByEmailAddress("cantbebothered@test.com")).thenReturn(profile);
+        when(clientProfileRepository.findByEmailAddressContainingIgnoreCase("cantbebothered@test.com")).thenReturn(profile);
         ClientProfile response = controller.findByEmail("cantbebothered@test.com");
         assertThat(response, is(notNullValue()));
         assertThat(response, is(profile));

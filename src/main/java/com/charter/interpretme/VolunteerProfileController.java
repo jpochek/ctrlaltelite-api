@@ -60,11 +60,11 @@ public class VolunteerProfileController {
 
     @PostMapping("/user/{username}")
     public VolunteerProfile findByUsername(@PathVariable String username) {
-        return volunteerProfileRepository.findByUsername(username);
+        return volunteerProfileRepository.findByUsernameContainingIgnoreCase(username);
     }
 
     @PostMapping("/email/{email}")
     public VolunteerProfile findByEmail(@PathVariable("email") String emailAddress) {
-        return volunteerProfileRepository.findByEmailAddress(emailAddress);
+        return volunteerProfileRepository.findByEmailAddressContainingIgnoreCase(emailAddress);
     }
 }

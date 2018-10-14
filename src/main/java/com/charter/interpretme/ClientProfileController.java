@@ -40,12 +40,12 @@ public class ClientProfileController {
 
     @PostMapping("/user/{username}")
     public ClientProfile findByUsername(@PathVariable String username) {
-        return clientProfileRepository.findByUsername(username);
+        return clientProfileRepository.findByUsernameContainingIgnoreCase(username);
     }
 
     @PostMapping("/email/{email}")
     public ClientProfile findByEmail(@PathVariable("email") String emailAddress) {
-        return clientProfileRepository.findByEmailAddress(emailAddress);
+        return clientProfileRepository.findByEmailAddressContainingIgnoreCase(emailAddress);
     }
 
     @PostMapping
