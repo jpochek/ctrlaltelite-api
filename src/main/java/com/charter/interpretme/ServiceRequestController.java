@@ -1,6 +1,10 @@
 package com.charter.interpretme;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +33,10 @@ public class ServiceRequestController {
     }
 
     @PostMapping
-    public ServiceRequest create(@RequestBody ServiceRequest serviceRequest) {
+    public ServiceRequest create(@RequestBody ServiceRequest serviceRequest, HttpServletRequest request)
+            throws MalformedURLException {
+
+        URL url = new URL(request.getRequestURL().toString());
 
         ServiceRequest response = serviceRequestRepository.save(new ServiceRequest(
                 serviceRequest.getClientId(),
@@ -48,7 +55,7 @@ public class ServiceRequestController {
                 serviceRequest.getAppointmentTo(),
                 ServiceRequest.Status.Pending
         ));
-        volunteerNotificationSender.sendVolunteerNotificationAsync(response);
+        volunteerNotificationSender.sendVolunteerNotificationAsync(response, url);
         return response;
     }
 

@@ -44,9 +44,13 @@ public class ConfirmationControlller {
         ClientProfile clientProfile = clientProfileRepository.findOne(clientId);
         VolunteerProfile volunteerProfile = volunteerProfileRepository.findOne(volunteerId);
         ServiceRequest serviceRequest = serviceRequestRepository.findOne(serviceRequestId);
-        updateServiceRequest(serviceRequest, volunteerId);
-        clientConfirmationSender.sendClientConfirmationAsync(serviceRequest, clientProfile, volunteerProfile);
-        return "You are confirmed";
+        if(!serviceRequest.getStatus().equals(ServiceRequest.Status.Completed)) {
+            updateServiceRequest(serviceRequest, volunteerId);
+            clientConfirmationSender.sendClientConfirmationAsync(serviceRequest, clientProfile, volunteerProfile);
+            return "You are confirmed";
+        }else{
+            return "You are not confirmed";
+        }
 
     }
 

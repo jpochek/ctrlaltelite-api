@@ -1,5 +1,6 @@
 package com.charter.interpretme;
 
+import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,13 +23,13 @@ public class VolunteerNotificationSender {
     @Autowired
     private TaskExecutor taskExecutor;
 
-    public void sendVolunteerNotificationAsync(ServiceRequest serviceRequest) {
+    public void sendVolunteerNotificationAsync(ServiceRequest serviceRequest, URL url) {
         taskExecutor.execute(() -> {
-            sendVolunteerNotification(serviceRequest);
+            sendVolunteerNotification(serviceRequest, url);
         });
     }
 
-    public void sendVolunteerNotification(ServiceRequest serviceRequest) {
+    public void sendVolunteerNotification(ServiceRequest serviceRequest, URL url) {
         List<VolunteerProfile> volunteers = volunteerProfileRepository
                 .findByStreetAddress1AndStateAndPostalCodeAndCity(
                         serviceRequest.getStreetAddress(), serviceRequest.getState(), serviceRequest.getZipCode(),
@@ -40,7 +41,7 @@ public class VolunteerNotificationSender {
                     .filter(v -> v.getLanguages().contains(serviceRequest.getLanguageTo()))
                     .collect(Collectors.toList());
 
-            volunteerNotificationEmailSender.sendEmailToVolunteers(serviceRequest, filteredVolunteers);
+            volunteerNotificationEmailSender.sendEmailToVolunteers(serviceRequest, filteredVolunteers, url);
         }
     }
 }

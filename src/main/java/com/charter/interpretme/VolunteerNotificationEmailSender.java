@@ -1,6 +1,7 @@
 package com.charter.interpretme;
 
 import java.io.StringWriter;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -32,19 +33,18 @@ public class VolunteerNotificationEmailSender {
     private ClientProfileRepository clientProfileRepository;
 
     @Async
-    public void sendEmailToVolunteers(ServiceRequest serviceRequest, List<VolunteerProfile> volunteerProfiles) {
+    public void sendEmailToVolunteers(ServiceRequest serviceRequest, List<VolunteerProfile> volunteerProfiles, URL url) {
         ClientProfile clientProfile = clientProfileRepository.findOne(serviceRequest.getClientId());
         volunteerProfiles.parallelStream()
-                .map(volunteerProfile -> createEmailNotificationInfo(serviceRequest, clientProfile, volunteerProfile))
+                .map(volunteerProfile -> createEmailNotificationInfo(serviceRequest, clientProfile, volunteerProfile, url))
                 .map(this::sendNotificationEmail)
                 .collect(Collectors.toList());
     }
 
     private VolunteerEmailNotificationInfo createEmailNotificationInfo(ServiceRequest serviceRequest,
-            ClientProfile clientProfile,
-            VolunteerProfile volunteerProfile) {
+            ClientProfile clientProfile, VolunteerProfile volunteerProfile, URL url) {
         String confirmationLink = confirmationLinkGenerator
-                .generateLink(volunteerProfile.getId(), clientProfile.getId(), serviceRequest.getId());
+                .generateLink(url, volunteerProfile.getId(), clientProfile.getId(), serviceRequest.getId());
         String clientName =
                 valueMapper(clientProfile::getFirstName) + " " + valueMapper(clientProfile::getLastName);
         String volunteerName = valueMapper(volunteerProfile::getFirstName) + " " + valueMapper(
