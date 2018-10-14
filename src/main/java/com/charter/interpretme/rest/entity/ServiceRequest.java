@@ -1,6 +1,6 @@
 package com.charter.interpretme.rest.entity;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,12 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.charter.interpretme.utils.LocalDateTimeDeserializer;
-import com.charter.interpretme.utils.LocalDateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "servicerequest")
@@ -41,7 +37,7 @@ public class ServiceRequest {
     private String zipCode;
     @Column(name = "state")
     private String state;
-    @Column(name="city")
+    @Column(name = "city")
     private String city;
     @Column(name = "streetAddress")
     private String streetAddress;
@@ -51,16 +47,15 @@ public class ServiceRequest {
     private String category;
     @Column(name = "description")
     private String description;
-    @Column(name="status")
+    @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;
-    @Column(name = "appointmentDate")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime appointmentFrom = LocalDateTime.now();
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime appointmentTo = LocalDateTime.now();
+    @Column(name = "appointmentDateFrom")
+    private Date appointmentFrom = new Date();
+    @Column(name = "appontmentDateTo")
+    private Date appointmentTo = new Date();
+    @Column(name = "createdDate")
+    private Date createdDate = new Date();
 
     public ServiceRequest() {
     }
@@ -79,8 +74,8 @@ public class ServiceRequest {
             Boolean isInPerson,
             String category,
             String description,
-            LocalDateTime appointmentFrom,
-            LocalDateTime appointmentTo,
+            Date appointmentFrom,
+            Date appointmentTo,
             Status status
     ) {
         this.id = id;
@@ -115,8 +110,8 @@ public class ServiceRequest {
             @JsonProperty("isInPerson") Boolean isInPerson,
             @JsonProperty("category") String category,
             @JsonProperty("description") String description,
-            @JsonProperty("appointmentFrom") LocalDateTime appointmentFrom,
-            @JsonProperty("appointmentTo") LocalDateTime appointmentTo,
+            @JsonProperty("appointmentFrom") Date appointmentFrom,
+            @JsonProperty("appointmentTo") Date appointmentTo,
             @JsonProperty("status") Status status
 
     ) {
@@ -193,12 +188,11 @@ public class ServiceRequest {
         return description;
     }
 
-
-    public LocalDateTime getAppointmentFrom() {
+    public Date getAppointmentFrom() {
         return appointmentFrom;
     }
 
-    public LocalDateTime getAppointmentTo() {
+    public Date getAppointmentTo() {
         return appointmentTo;
     }
 
@@ -210,12 +204,16 @@ public class ServiceRequest {
         this.status = status;
     }
 
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
     public static enum Priority {
         High, Mediaum, low
     }
 
     public static enum Status {
-        Pending, Completed , Cancelled
+        Pending, Completed, Cancelled
     }
 
 }

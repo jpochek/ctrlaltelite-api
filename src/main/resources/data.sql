@@ -1,3 +1,32 @@
+insert
+into
+  servicerequest
+  ( category, client_id, description, is_in_person, language_from, language_to, priority, state, street_address, zip_code, status, created_date)
+values
+  ( 'C1A', '1', 'need translator for court date', true, 'Spanish', 'English', 'High', 'MO', 'Marine Drive','63043','Pending',  '2018-12-01');
+
+insert
+into
+  servicerequest
+  ( category, client_id, description, is_in_person, language_from, language_to, priority, state, street_address, zip_code, status, created_date)
+values
+  ( 'C1A', '2', 'need translator for court date', true, 'Spanish', 'English', 'High', 'MO', 'Marine Drive','63043','Pending', '2018-11-01');
+
+insert
+into
+  servicerequest
+  ( category, client_id, description, is_in_person, language_from, language_to, priority, state, street_address, zip_code, status, created_date,volunteer_id)
+values
+  ( 'C1A', '1', 'need translator for court date', true, 'Spanish', 'English', 'High', 'MO', 'Marine Drive','63043','Completed', '2018-12-02', 1);
+
+insert
+into
+  servicerequest
+  ( category, client_id, description, is_in_person, language_from, language_to, priority, state, street_address, zip_code, status, created_date, volunteer_id)
+values
+  ( 'C1A', '2', 'need translator for court date', true, 'Spanish', 'English', 'High', 'MO', 'Marine Drive','63043','Completed', '2018-12-07',2);
+
+
 INSERT INTO VOLUNTEER_PROFILE(average_rating,
 city,
 email_address,
