@@ -50,9 +50,9 @@ public class ServiceRequest {
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;
-    @Column(name = "appointmentDateFrom")
+    @Column(name = "appointmentFrom")
     private Date appointmentFrom = new Date();
-    @Column(name = "appontmentDateTo")
+    @Column(name = "appointmentTo")
     private Date appointmentTo = new Date();
     @Column(name = "createdDate")
     private Date createdDate = new Date();
