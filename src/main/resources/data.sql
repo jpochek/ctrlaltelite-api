@@ -1,3 +1,32 @@
+insert
+into
+  servicerequest
+  ( category, client_id, description, is_in_person, language_from, language_to, priority, state, street_address, zip_code, status, created_date, appointment_from, appointment_to)
+values
+  ( 'C1A', '1', 'need translator for court date', true, 'Spanish', 'English', 'High', 'MO', 'Marine Drive','63043','Pending',  '2018-12-01', '2018-12-09', '2018-12-09');
+
+insert
+into
+  servicerequest
+  ( category, client_id, description, is_in_person, language_from, language_to, priority, state, street_address, zip_code, status, created_date, appointment_from, appointment_to)
+values
+  ( 'C1A', '2', 'need translator for court date', true, 'Spanish', 'English', 'High', 'MO', 'Marine Drive','63043','Pending', '2018-11-01', '2018-12-10', '2018-12-11');
+
+insert
+into
+  servicerequest
+  ( category, client_id, description, is_in_person, language_from, language_to, priority, state, street_address, zip_code, status, created_date,volunteer_id, appointment_from, appointment_to)
+values
+  ( 'C1A', '1', 'need translator for court date', true, 'Spanish', 'English', 'High', 'MO', 'Marine Drive','63043','Completed', '2018-12-02', 1, '2018-12-10', '2018-12-10');
+
+insert
+into
+  servicerequest
+  ( category, client_id, description, is_in_person, language_from, language_to, priority, state, street_address, zip_code, status, created_date, volunteer_id, appointment_from, appointment_to)
+values
+  ( 'C1A', '2', 'need translator for court date', true, 'Spanish', 'English', 'High', 'MO', 'Marine Drive','63043','Completed', '2018-12-07',2, '2018-12-09', '2018-12-09');
+
+
 INSERT INTO VOLUNTEER_PROFILE(average_rating,
 city,
 email_address,
@@ -258,7 +287,7 @@ gender,
 meet_in_person,
 contact_method)
 VALUES
-(5.0,'St Louis','interpretme1@gmail.com','Dave','Spanish','Woo','639-900-1919','../img/Dave.jpg','11142','Client','MO','123 Main St','','Dave8',32,'Male','Y', 'Email');
+(5.0,'St Louis','jwoo5900@gmail.com','Dave','Spanish','Woo','639-900-1919','../img/Dave.jpg','11142','Client','MO','123 Main St','','Dave8',32,'Male','Y', 'Email');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,

@@ -1,11 +1,12 @@
 package com.charter.interpretme.repository;
 
-import com.charter.interpretme.rest.entity.VolunteerProfile;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.charter.interpretme.rest.entity.VolunteerProfile;
 
 @Repository
 public interface VolunteerProfileRepository extends JpaRepository<VolunteerProfile, String>, JpaSpecificationExecutor {
@@ -13,5 +14,9 @@ public interface VolunteerProfileRepository extends JpaRepository<VolunteerProfi
 
     VolunteerProfile findByEmailAddressContainingIgnoreCase(String emailAddress);
 
-    List<VolunteerProfile> findByStreetAddress1AndStateAndPostalCodeAndCity(String streetAddress, String state, String postalCode,String city);
+    List<VolunteerProfile> findByPostalCode(String postalCode);
+
+    List<VolunteerProfile> findByStateAndCity(String state, String city);
+
+    List<VolunteerProfile> findByState(String state);
 }

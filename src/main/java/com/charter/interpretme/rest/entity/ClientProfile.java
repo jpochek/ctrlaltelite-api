@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * Profile implementation for a client application user.
  */
 @Entity
-public class ClientProfile {
+public class ClientProfile implements Profile{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;

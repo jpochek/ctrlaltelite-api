@@ -3,6 +3,7 @@ package com.charter.interpretme;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.charter.interpretme.repository.ClientProfileRepository;
 import com.charter.interpretme.repository.ServiceRequestRepository;
+import com.charter.interpretme.repository.VolunteerProfileRepository;
 import com.charter.interpretme.rest.entity.ServiceRequest;
 
 @RestController
@@ -26,6 +29,10 @@ public class ServiceRequestController {
     private ServiceRequestRepository serviceRequestRepository;
     @Autowired
     private VolunteerNotificationSender volunteerNotificationSender;
+    @Autowired
+    private VolunteerProfileRepository volunteerProfileRepository;
+    @Autowired
+    private ClientProfileRepository clientProfileRepository;
 
     @GetMapping
     public List<ServiceRequest> getServiceRequests() {
@@ -33,13 +40,19 @@ public class ServiceRequestController {
     }
 
     @GetMapping("/client/{clientId}")
-    public List<ServiceRequest> clientSpecialRequests(@PathVariable String clientId) {
-        return serviceRequestRepository.findByClientId(clientId);
+    public List<CompletedServiceRequest> clientSpecialRequests(@PathVariable String clientId) {
+        List<ServiceRequest> serviceRequests = serviceRequestRepository.findByClientId(clientId);
+        return serviceRequests.stream()
+                .map(serviceRequest -> new CompletedServiceRequest(serviceRequest, volunteerProfileRepository, clientProfileRepository))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/volunteer/{volunteerId}")
-    public List<ServiceRequest> volunteerSpecialRequests(@PathVariable String volunteerId) {
-        return serviceRequestRepository.findByVolunteerId(volunteerId);
+    public List<CompletedServiceRequest> volunteerSpecialRequests(@PathVariable String volunteerId) {
+        List<ServiceRequest> serviceRequests = serviceRequestRepository.findByVolunteerId(volunteerId);
+        return serviceRequests.stream()
+                .map(serviceRequest -> new CompletedServiceRequest(serviceRequest, volunteerProfileRepository, clientProfileRepository))
+                .collect(Collectors.toList());
     }
 
     @PostMapping

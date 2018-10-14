@@ -1,8 +1,8 @@
 package com.charter.interpretme;
 
 import java.io.StringWriter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.function.Supplier;
 
 import org.apache.velocity.VelocityContext;
@@ -45,7 +45,7 @@ public class ClientConfirmationEmailSender {
         String appointmentFrom = getFormattedDate(serviceRequest.getAppointmentFrom());
         String appointmentTo = getFormattedDate(serviceRequest.getAppointmentTo());
 
-        return new ClientEmailConfirmationInfo(clientName, clientEmail,volunteerName, volunteerImage, appointmentFrom,
+        return new ClientEmailConfirmationInfo(clientName, clientEmail, volunteerName, volunteerImage, appointmentFrom,
                 appointmentTo);
     }
 
@@ -57,9 +57,9 @@ public class ClientConfirmationEmailSender {
         }
     }
 
-    private String getFormattedDate(LocalDateTime date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        return date.format(formatter);
+    private String getFormattedDate(Date date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return formatter.format(date);
     }
 
     public boolean sendConfirmationEmail(ClientEmailConfirmationInfo clientEmailConfirmationInfo) {

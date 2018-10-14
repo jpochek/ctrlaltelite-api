@@ -1,9 +1,5 @@
 package com.charter.interpretme.rest.entity;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.hibernate.annotations.Type;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,11 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.annotations.Type;
+
 /**
  * Representation of a Volunteer user of the application.
  */
 @Entity
-public class VolunteerProfile {
+public class VolunteerProfile implements Profile{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
@@ -52,10 +52,10 @@ public class VolunteerProfile {
     }
 
     public VolunteerProfile(String id, String username, String firstName, String lastName, String languages,
-                            String streetAddress1, String streetAddress2, String city, String state,
-                            String postalCode, String emailAddress, String phoneNumber, Double averageRating,
-                            String photoLocation, Integer age, String gender, Boolean meetInPerson,
-                            String contactMethod) {
+            String streetAddress1, String streetAddress2, String city, String state,
+            String postalCode, String emailAddress, String phoneNumber, Double averageRating,
+            String photoLocation, Integer age, String gender, Boolean meetInPerson,
+            String contactMethod) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -78,9 +78,11 @@ public class VolunteerProfile {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+        if (this == o)
+            return true;
 
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         VolunteerProfile that = (VolunteerProfile) o;
 

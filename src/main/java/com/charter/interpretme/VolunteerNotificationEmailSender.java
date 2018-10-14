@@ -2,8 +2,8 @@ package com.charter.interpretme;
 
 import java.io.StringWriter;
 import java.net.URL;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -33,10 +33,12 @@ public class VolunteerNotificationEmailSender {
     private ClientProfileRepository clientProfileRepository;
 
     @Async
-    public void sendEmailToVolunteers(ServiceRequest serviceRequest, List<VolunteerProfile> volunteerProfiles, URL url) {
+    public void sendEmailToVolunteers(ServiceRequest serviceRequest, List<VolunteerProfile> volunteerProfiles,
+            URL url) {
         ClientProfile clientProfile = clientProfileRepository.findOne(serviceRequest.getClientId());
         volunteerProfiles.parallelStream()
-                .map(volunteerProfile -> createEmailNotificationInfo(serviceRequest, clientProfile, volunteerProfile, url))
+                .map(volunteerProfile -> createEmailNotificationInfo(serviceRequest, clientProfile, volunteerProfile,
+                        url))
                 .map(this::sendNotificationEmail)
                 .collect(Collectors.toList());
     }
@@ -66,9 +68,9 @@ public class VolunteerNotificationEmailSender {
         }
     }
 
-    private String getFormattedDate(LocalDateTime date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        return date.format(formatter);
+    private String getFormattedDate(Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return simpleDateFormat.format(date);
     }
 
     public boolean sendNotificationEmail(VolunteerEmailNotificationInfo emailConfirmationNotificationInfo) {
