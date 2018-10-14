@@ -31,9 +31,14 @@ public class VolunteerNotificationSender {
 
     public void sendVolunteerNotification(ServiceRequest serviceRequest, URL url) {
         List<VolunteerProfile> volunteers = volunteerProfileRepository
-                .findByStreetAddress1AndStateAndPostalCodeAndCity(
-                        serviceRequest.getStreetAddress(), serviceRequest.getState(), serviceRequest.getZipCode(),
-                        serviceRequest.getCity());
+                .findByPostal(serviceRequest.getZipCode());
+        if (CollectionUtils.isEmpty(volunteers))
+            volunteers = volunteerProfileRepository
+                    .findByStateAndCity(serviceRequest.getState(), serviceRequest.getCity());
+        if (CollectionUtils.isEmpty(volunteers))
+            volunteers = volunteerProfileRepository.findByState(serviceRequest.getState());
+        if (CollectionUtils.isEmpty(volunteers))
+            volunteers = volunteerProfileRepository.findAll();
 
         if (!CollectionUtils.isEmpty(volunteers)) {
             List<VolunteerProfile> filteredVolunteers = volunteers.stream()
