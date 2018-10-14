@@ -17,7 +17,7 @@ gender,
 meet_in_person,
 contact_method)
 VALUES
-(5.0,'St Louis','naresh.mjan@gmail.com','John','Spanish,Italian','Doe','639-900-1919','../img/john.jpg','63142','Volunteer','MO','123 Main St','','johndoe9', 33, 'Male', 'N', 'Email');
+(5.0,'St Louis','interpretme1@gmail.com','John','Spanish,Italian','Doe','639-900-1919','../img/john.jpg','63142','Volunteer','MO','123 Main St','','johndoe9', 33, 'Male', 'N', 'Email');
 INSERT INTO VOLUNTEER_PROFILE(average_rating,
 city,
 email_address,
@@ -37,7 +37,7 @@ gender,
 meet_in_person,
 contact_method)
 VALUES
-(5.0,'St Louis','vsambaraju@gmail.com','John','Spanish,Italian,English','Doe','639-900-1919','../img/john.jpg','63142','Volunteer','MO','123 Main St','','johndoe8', 33, 'Male', 'Y', 'Text');
+(5.0,'St Louis','interpretme.acc1@gmail.com','John','Spanish,Italian,English','Doe','639-900-1919','../img/john.jpg','63142','Volunteer','MO','123 Main St','','johndoe8', 33, 'Male', 'Y', 'Text');
 INSERT INTO VOLUNTEER_PROFILE(average_rating,
 city,
 email_address,
@@ -258,7 +258,7 @@ gender,
 meet_in_person,
 contact_method)
 VALUES
-(5.0,'St Louis','naresh.mjan@gmail.com','Dave','Spanish','Woo','639-900-1919','../img/Dave.jpg','11142','Client','MO','123 Main St','','Dave8',32,'Male','Y', 'Email');
+(5.0,'St Louis','interpretme1@gmail.com','Dave','Spanish','Woo','639-900-1919','../img/Dave.jpg','11142','Client','MO','123 Main St','','Dave8',32,'Male','Y', 'Email');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,

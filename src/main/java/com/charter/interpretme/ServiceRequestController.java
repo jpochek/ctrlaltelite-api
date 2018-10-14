@@ -32,6 +32,16 @@ public class ServiceRequestController {
         return serviceRequestRepository.findAll();
     }
 
+    @GetMapping("/client/{clientId}")
+    public List<ServiceRequest> clientSpecialRequests(@PathVariable String clientId) {
+        return serviceRequestRepository.findByClientId(clientId);
+    }
+
+    @GetMapping("/volunteer/{volunteerId}")
+    public List<ServiceRequest> volunteerSpecialRequests(@PathVariable String volunteerId) {
+        return serviceRequestRepository.findByVolunteerId(volunteerId);
+    }
+
     @PostMapping
     public ServiceRequest create(@RequestBody ServiceRequest serviceRequest, HttpServletRequest request)
             throws MalformedURLException {
