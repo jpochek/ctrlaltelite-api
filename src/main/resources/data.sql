@@ -258,7 +258,7 @@ gender,
 meet_in_person,
 contact_method)
 VALUES
-(5.0,'St Louis','Dave.woo@gmail.com','Dave','Spanish','Woo','639-900-1919','../img/Dave.jpg','11142','Client','MO','123 Main St','','Dave8',32,'Male','Y', 'Email');
+(5.0,'St Louis','Dave.woo@gmail.com','Dave','Spanish','Woo','639-900-1919','../img/Dave.jpg','11142','Client','MO','123 Main St','','Dave8',32,'NonBinary','Y', 'SMS');
 INSERT INTO CLIENT_PROFILE(average_rating,
 city,
 email_address,
