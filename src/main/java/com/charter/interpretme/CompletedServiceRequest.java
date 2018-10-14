@@ -34,9 +34,12 @@ public class CompletedServiceRequest extends ServiceRequest {
         );
         if (StringUtils.isNotBlank(serviceRequest.getVolunteerId())) {
             VolunteerProfile volunteerProfile = volunteerProfileRepository.findOne(serviceRequest.getVolunteerId());
-            ClientProfile clientProfile = clientProfileRepository.findOne(serviceRequest.getClientId());
             this.volunteerName = String.join(" ", volunteerProfile.getFirstName(), volunteerProfile.getLastName());
             this.ratings = volunteerProfile.getAverageRating();
+
+        }
+        if (StringUtils.isNotBlank(serviceRequest.getClientId())) {
+            ClientProfile clientProfile = clientProfileRepository.findOne(serviceRequest.getClientId());
             this.clientName = String.join(" ", clientProfile.getFirstName(), clientProfile.getLastName());
         }
     }
