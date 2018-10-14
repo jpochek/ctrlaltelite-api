@@ -2,10 +2,7 @@ package com.charter.interpretme;
 
 import java.net.InetAddress;
 import java.net.URL;
-import java.util.AbstractMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.net.URLEncoder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -18,13 +15,13 @@ public class ConfirmationLinkGenerator {
     @Autowired
     private Environment environment;
 
-    public String generateLink(String volunteerId) {
+    public String generateLink(String volunteerId, String clientId, String serviceRequestId) {
         try {
-            String encodedVolunteerId = EncryptionUtil.encrypt(volunteerId);
+            String confirmationId = EncryptionUtil.encrypt(volunteerId + "-" + clientId + "-" + serviceRequestId);
             String port = environment.getProperty("server.port");
             String host = InetAddress.getLocalHost().getCanonicalHostName();
             URL url = new URL("http", host, Integer.parseInt(port), "");
-            return url.toString() + "/api/confirm/" + encodedVolunteerId;
+            return url.toString() + "/api/confirm/" + URLEncoder.encode(confirmationId, "UTF-8");
         } catch (Exception e) {
             throw new RuntimeException("Error creating confirmation url.");
         }
