@@ -41,7 +41,6 @@ public class VolunteerProfileController {
 
     @GetMapping("/{profileId}")
     public VolunteerProfile findById(@PathVariable("profileId") String profileId) {
-        System.out.println("DEBUG " + volunteerProfileRepository.findOne(profileId));
         return volunteerProfileRepository.findOne(profileId);
     }
 

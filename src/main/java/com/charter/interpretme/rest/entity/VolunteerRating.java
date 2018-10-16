@@ -2,8 +2,6 @@ package com.charter.interpretme.rest.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -15,11 +13,10 @@ public class VolunteerRating {
     private String id;
 
     @Column(name = "averageRating")
-    private  Double averageRating;
+    private Double averageRating;
 
     public VolunteerRating() {
     }
-
 
     @JsonCreator
     public VolunteerRating(
