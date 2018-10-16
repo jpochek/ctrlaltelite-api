@@ -1,7 +1,7 @@
 package com.charter.interpretme;
 
-import com.charter.interpretme.repository.VolunteerProfileRepository;
-import com.charter.interpretme.rest.entity.VolunteerProfile;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.charter.interpretme.repository.VolunteerProfileRepository;
+import com.charter.interpretme.repository.VolunteerRatingRepository;
+import com.charter.interpretme.rest.entity.VolunteerProfile;
+import com.charter.interpretme.rest.entity.VolunteerRating;
 
 /**
  * Controller for interacting with Volunteer entities.
@@ -22,6 +25,9 @@ import java.util.List;
 public class VolunteerProfileController {
 
     private VolunteerProfileRepository volunteerProfileRepository;
+
+    @Autowired
+    private VolunteerRatingRepository volunteerRatingRepository;
 
     @Autowired
     public VolunteerProfileController(VolunteerProfileRepository volunteerProfileRepository) {
@@ -35,6 +41,7 @@ public class VolunteerProfileController {
 
     @GetMapping("/{profileId}")
     public VolunteerProfile findById(@PathVariable("profileId") String profileId) {
+        System.out.println("DEBUG " + volunteerProfileRepository.findOne(profileId));
         return volunteerProfileRepository.findOne(profileId);
     }
 
@@ -45,12 +52,15 @@ public class VolunteerProfileController {
 
     @PutMapping("/{profileId}")
     public VolunteerProfile editVolunteer(@PathVariable("profileId") String profileId,
-                                          @RequestBody VolunteerProfile profile) {
-        return volunteerProfileRepository.save(new VolunteerProfile(profileId, profile.getUsername(), profile.getFirstName(),
-                profile.getLastName(), profile.getLanguages(), profile.getStreetAddress1(), profile.getStreetAddress2(),
-                profile.getCity(), profile.getState(), profile.getPostalCode(), profile.getEmailAddress(), profile.getPhoneNumber(),
-                profile.getAverageRating(), profile.getPhotoLocation(), profile.getAge(), profile.getGender(),
-                profile.getMeetInPerson(), profile.getContactMethod()));
+            @RequestBody VolunteerProfile profile) {
+        return volunteerProfileRepository
+                .save(new VolunteerProfile(profileId, profile.getUsername(), profile.getFirstName(),
+                        profile.getLastName(), profile.getLanguages(), profile.getStreetAddress1(),
+                        profile.getStreetAddress2(),
+                        profile.getCity(), profile.getState(), profile.getPostalCode(), profile.getEmailAddress(),
+                        profile.getPhoneNumber(),
+                        profile.getAverageRating(), profile.getPhotoLocation(), profile.getAge(), profile.getGender(),
+                        profile.getMeetInPerson(), profile.getContactMethod()));
     }
 
     @DeleteMapping("/{profileId}")
@@ -66,5 +76,18 @@ public class VolunteerProfileController {
     @PostMapping("/email/{email}")
     public VolunteerProfile findByEmail(@PathVariable("email") String emailAddress) {
         return volunteerProfileRepository.findByEmailAddressContainingIgnoreCase(emailAddress);
+    }
+
+    @PostMapping("/{profileId}/servicerating/{rating}")
+    public VolunteerRating getServiceRating(@PathVariable("profileId") String profileId,
+            @PathVariable("rating") Double rating) {
+        if (volunteerRatingRepository.findOne(profileId) == null) {
+            return volunteerRatingRepository.save(new VolunteerRating(profileId, rating));
+        }
+
+        Double averageRating = (rating + volunteerRatingRepository.findOne(profileId).getAverageRating()) / 2.0;
+        volunteerRatingRepository.findOne(profileId).setAverageRating(averageRating);
+        return volunteerRatingRepository.findOne(profileId);
+
     }
 }

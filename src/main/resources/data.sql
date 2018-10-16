@@ -488,3 +488,15 @@ meet_in_person,
 contact_method)
 VALUES
 (5.0,'Boston','zin.mina@mail.com','zin','Burmese','mina','639-667-1919','../img/mina.jpg','88142','Client','MA','103 Spring St','','mina03',38,'Male','Y', 'Email');
+
+INSERT INTO VOLUNTEER_RATING (id,average_rating)
+VALUES
+  (1,5);
+
+INSERT INTO VOLUNTEER_RATING (id,average_rating)
+VALUES
+  (2,4);
+
+INSERT INTO VOLUNTEER_RATING (id,average_rating)
+VALUES
+  (3,3);
